@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "*.csv": "csv",
+        "freertos.h": "c",
+        "semphr.h": "c"
+    }
+}

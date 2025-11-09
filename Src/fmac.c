@@ -60,7 +60,7 @@ void HAL_FMAC_MspInit(FMAC_HandleTypeDef* fmacHandle)
     __HAL_RCC_FMAC_CLK_ENABLE();
 
     /* FMAC interrupt Init */
-    HAL_NVIC_SetPriority(FMAC_IRQn, 0, 0);
+    HAL_NVIC_SetPriority(FMAC_IRQn, 5, 0);
     HAL_NVIC_EnableIRQ(FMAC_IRQn);
   /* USER CODE BEGIN FMAC_MspInit 1 */
 
