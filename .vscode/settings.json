@@ -2,6 +2,7 @@
     "files.associations": {
         "*.csv": "csv",
         "freertos.h": "c",
-        "semphr.h": "c"
+        "semphr.h": "c",
+        "init.h": "c"
     }
 }
