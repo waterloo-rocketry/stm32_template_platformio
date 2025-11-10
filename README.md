@@ -4,11 +4,9 @@ Template repo for STM32(H7) projects on the team. Based on [Processor 2025 Firmw
 
 ## READ FIRST: How to customize this template
 
-1. Inside `.devcontainer/Dockerfile`, edit the following:
+1. Inside `platformio.ini`, edit the following:
 
--   `ENV BOARD_NAME="<board_name>"` e.g. "proc
--   `ENV STM_DEVICE="<chip_family>"` e.g. STM32H750xx
--   `ENV STM_DEVICE_EXACT="<chip_model>"` e.g. STM32H750ZBTX
+-   ... todo
 
 2. Open STM32CubeMX and generate the .ioc file for your specific chip **in a temporary location**. Make sure you set the following:
 
@@ -43,44 +41,33 @@ Template repo for STM32(H7) projects on the team. Based on [Processor 2025 Firmw
 
 ## Developer Setup
 
-This project is not dependent on STM32CubeIDE.
-Code editing, unit testing, and building should be done in the devcontainer.
-Only running/debugging on target should be done in STM32CubeIDE.
+All editing, board flashing, and debugging is done using platformio in vscode. TODO: add unit testing system
 
 #### 1. Clone repo
 
--   Clone repo and initialize submodules: ` git clone --recurse-submodules https://github.com/waterloo-rocketry/cansw_processor_canards`
+-   Clone repo and initialize submodules: ` git clone --recurse-submodules https://github.com/waterloo-rocketry/stm32_template_platformio`
     -   (Note: if you choose to clone with ssh instead, you have to manually setup ssh forwarding in the devcontainer.)
 
-#### 2. Open project in devcontainer
+#### 2. Open project in vscode with platformio extension
 
-The devcontainer has everything setup for editing, unit testing, and building. Most dev work should occur in it.
+-   Install the platformio extension in vscode
+-   Open this project folder
+-   Platformio should automatically detect the `platformio.ini` file and configure everything
 
--   Open the project using vscode devcontainers.
-    -   [Install devcontainers](https://code.visualstudio.com/docs/devcontainers/tutorial)
-    -   In a new vscode window, use `Ctrl+Shift+P`, search `Dev Containers: Open Folder In Container...`, then select this project folder
-        -   The first time opening the project will take several minutes to build the devcontainer. Subsequent times will be instant.
+#### 3. Build, upload to board
 
-#### 3. Build and test project in devcontainer
+-   Use an ST-Link programmer to connect to the target board
+-   Use the platformio sidebar tab `Build` to only build
+-   Use `Upload` to build + upload together
 
-_Recommended: use vscode cmake plugin:_
+#### 4. Debug
 
--   Open the CMake plugin tab from the sidebar
--   Under `Configure`, select which build type you want
--   Hover over `Build`, click the build icon to build the configuration
-    -   The build preset should automatically be selected (eg, `Build Firmware (Debug) preset`)
-
-#### 4. Run/debug in STM32CubeIDE
-
-STM32CubeIDE is required for flashing/debugging on hardware. NOTE: STM32CubeIDE is not able to _build_ this project. STM32CubeIDE is only used to _flash_ the build from step 3.
-
--   Import the project into STM32CubeIDE (version 1.16.1 recommended): `File -> Import... -> Existing Projects into Workspace`
--   Build the project firmware binary using vscode (step 3)
--   Use an ST-Link programmer to connect to processor board.
--   Use STM32CubeIDE launch/debug as usual
-    -   NOTE: since the project can't be built in STM32CubeIDE, auto-building before launch is turned off. **Remember to always build the project after making edits.**
+-   Use ST-Link to connect to the board
+-   Use vscode `Run and Debug` sidebar tab to build, upload, and start the debugger
 
 ## Unit Testing
+
+TODO: make this exist for platformio...
 
 We use GoogleTest and Fake Function Framework (fff) for unit testing. All testing-related files are in `tests/`.
 
