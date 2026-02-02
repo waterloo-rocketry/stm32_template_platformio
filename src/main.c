@@ -26,7 +26,6 @@
 #include "fmac.h"
 #include "i2c.h"
 #include "rtc.h"
-#include "sdmmc.h"
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
@@ -108,7 +107,6 @@ int main(void)
   MX_FMAC_Init();
   MX_I2C4_Init();
   MX_RTC_Init();
-  MX_SDMMC1_SD_Init();
   MX_UART4_Init();
   MX_ADC1_Init();
   MX_TIM2_Init();
