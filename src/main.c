@@ -103,9 +103,27 @@ int main(void) {
 		// ------ tutorial part 0.5 ------
 		// toggle the green led (connected to pin A3) on/off
 		// TODO: add a 500ms delay 
+	//	HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_3);
+	//	HAL_Delay(500);
+ /* for (int brightness = 0; brightness <= 1000; brightness++)
+    {
+        TIM3->CCR1 = brightness;
+
+        HAL_Delay(10);
+    }
+
+    for (int brightness = 1000; brightness >= 0; brightness--)
+    {
+        TIM3->CCR1 = brightness;
+
+        HAL_Delay(10);
+    }
+*/
 
 
-
+// dddfjdkf
+// dkgjdk
+// dgd
 
 
 
@@ -119,7 +137,6 @@ int main(void) {
 		// if (tmp1075_get_temperature(&temperature_c) == W_SUCCESS) {
 		// 	// TODO: ...
 		// }
-
 		// Read the voltage at the potentiometer
 		// float pot_voltage;
 		// if (potentiometer_get_voltage(&pot_voltage) == W_SUCCESS) {
