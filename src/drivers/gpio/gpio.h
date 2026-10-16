@@ -7,7 +7,7 @@
 
 #include <stdint.h>
 
-#include "rocketlib/include/common.h"
+#include "rocketlib.h"
 
 /**
  * Enum representing GPIO pin level

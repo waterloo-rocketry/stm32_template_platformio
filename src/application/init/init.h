@@ -3,7 +3,7 @@
 
 #include "FreeRTOS.h"
 #include "main.h" // For HAL handle declarations
-#include "rocketlib/include/common.h"
+#include "rocketlib.h"
 #include "task.h"
 
 // Maximum number of initialization retries before giving up
