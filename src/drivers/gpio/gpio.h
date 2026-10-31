@@ -7,7 +7,7 @@
 
 #include <stdint.h>
 
-#include "rocketlib/include/common.h"
+#include "rocketlib/common/common.h"
 
 /**
  * Enum representing GPIO pin level
@@ -23,9 +23,7 @@ typedef enum
  */
 typedef enum
 {
-    GPIO_PIN_RED_LED,
-    GPIO_PIN_GREEN_LED,
-    GPIO_PIN_BLUE_LED,
+    GPIO_PIN_LED,   
     GPIO_PIN_COUNT // Enum max value
 } gpio_pin_t;
 

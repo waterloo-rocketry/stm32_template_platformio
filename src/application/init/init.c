@@ -1,4 +1,4 @@
-#include "stm32h7xx_hal.h"
+#include "stm32h5xx_hal.h"
 #include "FreeRTOS.h"
 #include "task.h"
 #include "init.h"
@@ -15,10 +15,10 @@ const uint32_t blinky_task_priority = tskIDLE_PRIORITY + 1;
 static void blinky_task(void *pvParameters)
 {
     (void)pvParameters;
-
+    
     for (;;)
     {
-        gpio_toggle(GPIO_PIN_RED_LED, 5);
+        gpio_toggle(GPIO_PIN_LED, 5);
         vTaskDelay(pdMS_TO_TICKS(500));
     }
 }

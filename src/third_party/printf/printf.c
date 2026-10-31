@@ -45,7 +45,7 @@
 
 #include "third_party/printf/printf.h"
 
-#include "stm32h7xx_hal.h"
+#include "stm32h5xx_hal.h"
 
 #ifdef __cplusplus
 #include <cstdint>
@@ -264,7 +264,7 @@ typedef union
     double F;
 } double_with_bit_access;
 
-extern UART_HandleTypeDef huart4;
+extern UART_HandleTypeDef huart3;
 
 // This is unnecessary in C99, since compound initializers can be used,
 // but:

@@ -1,0 +1,29 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m33",
+    "extra_flags": "-DSTM32H5 -DSTM32H5xx -DSTM32H503xx",
+    "f_cpu": "250000000L",
+    "mcu": "stm32h503cbt6",
+    "product_line": "STM32H503xx"
+  },
+  "connectivity": [
+    "can"
+  ],
+  "debug": {
+    "jlink_device": "STM32H503CB",
+    "svd_path": "STM32H503.svd"
+  },
+  "frameworks": [],
+  "name": "STM32H503CBT6 (custom)",
+  "upload": {
+    "maximum_ram_size": 32768,
+    "maximum_size": 131072,
+    "protocol": "jlink",
+    "protocols": [
+      "jlink"
+    ]
+  },
+  "url": "https://www.st.com/en/microcontrollers-microprocessors/stm32h503cb.html",
+  "vendor": "ST"
+}
