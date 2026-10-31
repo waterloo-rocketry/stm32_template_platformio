@@ -264,7 +264,7 @@ typedef union
     double F;
 } double_with_bit_access;
 
-extern UART_HandleTypeDef huart4;
+extern UART_HandleTypeDef huart3;
 
 // This is unnecessary in C99, since compound initializers can be used,
 // but:
