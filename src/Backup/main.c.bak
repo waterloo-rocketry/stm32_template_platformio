@@ -110,6 +110,7 @@ int main(void)
   MX_I2C2_Init();
   MX_USART2_UART_Init();
   MX_TIM2_Init();
+  MX_USART3_UART_Init();
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
@@ -131,6 +132,9 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+
+    HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_9);
+    HAL_Delay(1000);
   }
   /* USER CODE END 3 */
 }
