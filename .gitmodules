@@ -1,3 +1,9 @@
 [submodule "src/third_party/rocketlib"]
 	path = src/third_party/rocketlib
 	url = https://github.com/waterloo-rocketry/rocketlib.git
+[submodule "third_party/openocd"]
+	path = third_party/openocd
+	url = https://github.com/STMicroelectronics/OpenOCD.git
+[submodule "openocd"]
+	path = openocd
+	url = https://github.com/STMicroelectronics/OpenOCD.git
