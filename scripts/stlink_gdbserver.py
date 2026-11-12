@@ -6,6 +6,7 @@ STLINK_GDBSERVER or STM32_PROGRAMMER_BIN to skip the search.
 """
 import glob
 import os
+import subprocess
 import sys
 
 
@@ -38,6 +39,7 @@ def find_server():
             r"\com.st.stm32cube.ide.mcu.externaltools.stlink-gdb-server.*\tools\bin" + "\\" + exe,
             r"C:\Program Files\STMicroelectronics\STM32CubeIDE*\STM32CubeIDE\plugins"
             r"\com.st.stm32cube.ide.mcu.externaltools.stlink-gdb-server.*\tools\bin" + "\\" + exe,
+            r"C:\ST\STM32CubeCLT*\STLink-gdb-server\bin" + "\\" + exe,
         ]
     else:
         patterns = [
@@ -69,6 +71,7 @@ def find_programmer():
             r"C:\Program Files\STMicroelectronics\STM32Cube\STM32CubeProgrammer\bin" + "\\" + cli,
             r"C:\ST\STM32CubeIDE*\STM32CubeIDE\plugins"
             r"\com.st.stm32cube.ide.mcu.externaltools.cubeprogrammer.*\tools\bin" + "\\" + cli,
+            r"C:\ST\STM32CubeCLT*\STM32CubeProgrammer\bin" + "\\" + cli,
         ]
     else:
         patterns = [
@@ -99,8 +102,12 @@ def main():
             args.append(programmer)
     else:
         args.extend(["-cp", programmer])
-    # The server loads ./native next to itself. cortex-debug's cwd is the project.
+    # The server loads ./native next to itself. cortex-debug's cwd is scripts/.
     os.chdir(os.path.dirname(server))
+    if os.name == "nt":
+        # os.execv on Windows returns immediately, so the .cmd exits and
+        # Cortex-Debug kills the server. Wait until the server exits.
+        raise SystemExit(subprocess.call([server] + args))
     os.execv(server, [server] + args)
 
 

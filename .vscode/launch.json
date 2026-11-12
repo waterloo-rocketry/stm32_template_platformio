@@ -24,7 +24,6 @@
             "executable": "${workspaceFolder}/.pio/build/debug/firmware.elf",
             "cwd": "${workspaceFolder}",
             "svdFile": "${userHome}/.platformio/platforms/ststm32/misc/svd/STM32H503.svd",
-            "runToEntryPoint": "main",
             "serverArgs": ["-m", "1"],
             "windows": {
                 "serverpath": "${workspaceFolder}/scripts/stlink-gdbserver.cmd",

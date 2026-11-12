@@ -3,6 +3,7 @@
 import glob
 import os
 import re
+import sys
 
 try:
     Import("env")  # set when PlatformIO runs this file; SCons does not define __file__
@@ -56,19 +57,57 @@ def installed_package():
     return sorted(matched or found)[-1]
 
 
+def slash(path):
+    return path.replace("\\", "/")
+
+
+def windows_stlink(text):
+    # Cortex-Debug must spawn ST-LINK_gdbserver.exe. A .cmd exits and the session dies.
+    if os.name != "nt":
+        return text
+    sys.path.insert(0, os.path.join(ROOT, "scripts"))
+    import stlink_gdbserver
+    try:
+        server = slash(stlink_gdbserver.find_server())
+        programmer = slash(stlink_gdbserver.find_programmer())
+    except SystemExit:
+        print("ST-Link tools not found; server path left unchanged")
+        return text
+    text = re.sub(
+        r'("windows"\s*:\s*\{[^}]*?"serverpath"\s*:\s*")[^"]*(")',
+        lambda match: match.group(1) + server + match.group(2),
+        text,
+        count=1,
+        flags=re.DOTALL,
+    )
+    text = re.sub(
+        r'("stm32cubeprogrammer"\s*:\s*")[^"]*(")',
+        lambda match: match.group(1) + programmer + match.group(2),
+        text,
+        count=1,
+    )
+    print(server)
+    return text
+
+
 def main():
-    package_dir = installed_package()
-    if not package_dir or not os.path.isfile(LAUNCH):
-        print("ARM GCC package not found; launch.json left unchanged")
+    if not os.path.isfile(LAUNCH):
+        print("launch.json not found")
         return
-    name = os.path.basename(package_dir)
     with open(LAUNCH, encoding="utf-8") as handle:
-        text = handle.read()
-    updated = PACKAGE.sub(name, text)
-    if updated != text:
+        original = handle.read()
+    text = original
+    package_dir = installed_package()
+    if package_dir:
+        name = os.path.basename(package_dir)
+        text = PACKAGE.sub(name, text)
+        print(name)
+    else:
+        print("ARM GCC package not found; compiler path left unchanged")
+    text = windows_stlink(text)
+    if text != original:
         with open(LAUNCH, "w", encoding="utf-8") as handle:
-            handle.write(updated)
-    print(name)
+            handle.write(text)
 
 
 main()
