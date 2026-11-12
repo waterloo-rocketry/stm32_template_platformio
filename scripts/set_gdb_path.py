@@ -4,7 +4,11 @@ import glob
 import os
 import re
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+try:
+    Import("env")  # set when PlatformIO runs this file; SCons does not define __file__
+    ROOT = env.subst("$PROJECT_DIR")
+except NameError:
+    ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LAUNCH = os.path.join(ROOT, ".vscode", "launch.json")
 PACKAGE = re.compile(r"toolchain-gccarmnoneeabi(?:@[A-Za-z0-9.]+)?")
 
