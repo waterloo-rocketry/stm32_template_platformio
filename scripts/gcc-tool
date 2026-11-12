@@ -1,8 +1,0 @@
-#!/bin/sh
-# cortex-debug launches arm-none-eabi-gdb, then objdump and nm by renaming that path.
-DIR=$(CDPATH= cd -- "$(dirname "$0")" && pwd)
-TOOL=$(basename "$0")
-if command -v python3 >/dev/null 2>&1; then
-    exec python3 "$DIR/gcc_tool.py" "$TOOL" "$@"
-fi
-exec python "$DIR/gcc_tool.py" "$TOOL" "$@"
