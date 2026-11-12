@@ -4,12 +4,31 @@
         {
             "label": "Flash STM32 (Release)",
             "type": "process",
-            "command": "C:\\Program Files\\STMicroelectronics\\STM32Cube\\STM32CubeProgrammer\\bin\\STM32_Programmer_CLI.exe",
+            "command": "STM32_Programmer_CLI",
             "args": [
                 "-c",
                 "port=SWD",
                 "-w",
-                "${workspaceFolder}\\build\\Release\\stm32h5_template.elf",
+                "${workspaceFolder}/build/Release/stm32h5_template.elf",
+                "-v",
+                "-rst"
+            ],
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared",
+                "clear": true
+            }
+        },
+        {
+            "label": "Flash STM32 (Debug)",
+            "type": "process",
+            "command": "STM32_Programmer_CLI",
+            "args": [
+                "-c",
+                "port=SWD",
+                "-w",
+                "${workspaceFolder}/build/Debug/stm32h5_template.elf",
                 "-v",
                 "-rst"
             ],
