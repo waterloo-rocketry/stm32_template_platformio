@@ -1,6 +1,7 @@
 // ST-LINK GDB Server Debug is the shared config for macOS, Linux, and Windows.
 // Paths use ${workspaceFolder} and ${userHome}. Windows replaces the server
-// and GDB names with the .cmd and .exe forms.
+// and GDB names with the .cmd forms. GDB, objdump, and nm live in scripts/
+// and pick the toolchain version from platformio.ini.
 //
 // pio run does not write this file. PlatformIO's "Rebuild IntelliSense Index"
 // rewrites the three PIO Debug entries with absolute paths for that computer
@@ -20,7 +21,7 @@
             "device": "STM32H503CBTx",
             "serverpath": "${workspaceFolder}/scripts/stlink-gdbserver",
             "stm32cubeprogrammer": "${workspaceFolder}/scripts",
-            "gdbPath": "${userHome}/.platformio/packages/toolchain-gccarmnoneeabi@1.120301.0/bin/arm-none-eabi-gdb",
+            "gdbPath": "${workspaceFolder}/scripts/arm-none-eabi-gdb",
             "executable": "${workspaceFolder}/.pio/build/debug/firmware.elf",
             "cwd": "${workspaceFolder}",
             "svdFile": "${userHome}/.platformio/platforms/ststm32/misc/svd/STM32H503.svd",
@@ -28,7 +29,7 @@
             "serverArgs": ["-m", "1"],
             "windows": {
                 "serverpath": "${workspaceFolder}/scripts/stlink-gdbserver.cmd",
-                "gdbPath": "${userHome}/.platformio/packages/toolchain-gccarmnoneeabi@1.120301.0/bin/arm-none-eabi-gdb.exe"
+                "gdbPath": "${workspaceFolder}/scripts/arm-none-eabi-gdb.cmd"
             }
         },
         {
@@ -37,7 +38,7 @@
             "name": "PIO Debug",
             "executable": "${workspaceFolder}/.pio/build/release/firmware.elf",
             "projectEnvName": "debug",
-            "toolchainBinDir": "${userHome}/.platformio/packages/toolchain-gccarmnoneeabi@1.120301.0/bin",
+            "toolchainBinDir": "${workspaceFolder}/scripts",
             "internalConsoleOptions": "openOnSessionStart",
             "svdPath": "${userHome}/.platformio/platforms/ststm32/misc/svd/STM32H503.svd",
             "preLaunchTask": {
@@ -51,7 +52,7 @@
             "name": "PIO Debug (skip Pre-Debug)",
             "executable": "${workspaceFolder}/.pio/build/release/firmware.elf",
             "projectEnvName": "debug",
-            "toolchainBinDir": "${userHome}/.platformio/packages/toolchain-gccarmnoneeabi@1.120301.0/bin",
+            "toolchainBinDir": "${workspaceFolder}/scripts",
             "internalConsoleOptions": "openOnSessionStart",
             "svdPath": "${userHome}/.platformio/platforms/ststm32/misc/svd/STM32H503.svd"
         },
@@ -61,7 +62,7 @@
             "name": "PIO Debug (without uploading)",
             "executable": "${workspaceFolder}/.pio/build/release/firmware.elf",
             "projectEnvName": "debug",
-            "toolchainBinDir": "${userHome}/.platformio/packages/toolchain-gccarmnoneeabi@1.120301.0/bin",
+            "toolchainBinDir": "${workspaceFolder}/scripts",
             "internalConsoleOptions": "openOnSessionStart",
             "svdPath": "${userHome}/.platformio/platforms/ststm32/misc/svd/STM32H503.svd",
             "loadMode": "manual"
