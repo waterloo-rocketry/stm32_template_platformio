@@ -25,7 +25,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "rocketlib/include/common.h"
+#include "rocketlib.h"
 #include "drivers/gpio/gpio.h"
 #include "application/init/init.h"
 /* USER CODE END Includes */

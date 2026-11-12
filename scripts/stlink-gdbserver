@@ -1,0 +1,7 @@
+#!/bin/sh
+# cortex-debug launches this. It finds ST-LINK_gdbserver for the current OS.
+DIR=$(CDPATH= cd -- "$(dirname "$0")" && pwd)
+if command -v python3 >/dev/null 2>&1; then
+    exec python3 "$DIR/stlink_gdbserver.py" "$@"
+fi
+exec python "$DIR/stlink_gdbserver.py" "$@"
