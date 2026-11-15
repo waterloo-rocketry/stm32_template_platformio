@@ -36,23 +36,22 @@ target_link_directories(${CMAKE_PROJECT_NAME} PRIVATE
 
 # Source files to include in build
 
-set(source_dir ${CMAKE_CURRENT_SOURCE_DIR}/src)
+set(source_dir src)
 # Recursively add all sources (.c files) in src/
 file(GLOB_RECURSE sources CONFIGURE_DEPENDS ${source_dir}/*.c)
 # Add source files in src/ which should be excluded from build into exclude_sources:
-# file(GLOB_RECURSE exclude_sources CONFIGURE_DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/src/exclude_sources/*.c)
+# Note GLOB_RECURSE returns absolute paths so our exclude_sources must also be absolute paths,
+#	hence use CMAKE_CURRENT_SOURCE_DIR when manually excluding sources.
+# file(GLOB_RECURSE exclude_sources CONFIGURE_DEPENDS ${source_dir}/exclude_sources/*.c)
 # list(APPEND exclude_sources
 # 	${CMAKE_CURRENT_SOURCE_DIR}/src/exclude_file1.c
 # 	${CMAKE_CURRENT_SOURCE_DIR}/src/exclude_file2.c
 # )
-# list(REMOVE_ITEM ${exclude_sources})
+# list(REMOVE_ITEM sources ${exclude_sources})
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE ${sources})
 
 # Add include paths
-target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
-	# Add user defined include paths
-	"${CMAKE_CURRENT_SOURCE_DIR}/inc"
-)
+target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE inc)
 
 # Add project symbols (macros)
 target_compile_definitions(${CMAKE_PROJECT_NAME} PRIVATE
