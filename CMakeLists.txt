@@ -69,6 +69,7 @@ target_link_libraries(${CMAKE_PROJECT_NAME}
 
 	# Add rocketlib sources
 	rocketlib::can_message
+	rocketlib::stm32_common
 )
 
 # Add flash target
