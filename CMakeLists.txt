@@ -55,7 +55,9 @@ target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE inc)
 
 # Add project symbols (macros)
 target_compile_definitions(${CMAKE_PROJECT_NAME} PRIVATE
-	# Add user defined symbols
+	# Set BOARD_TYPE_UNIQUE_ID and BOARD_INST_UNIQUE_ID, e.g.:
+	# BOARD_TYPE_UNIQUE_ID=BOARD_TYPE_ID_INJECTOR
+	# BOARD_INST_UNIQUE_ID=BOARD_INST_ID_ROCKET
 )
 
 # Remove wrong libob.a library dependency when using cpp files
