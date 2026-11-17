@@ -6,7 +6,7 @@
             "hidden": true,
             "generator": "Ninja",
             "binaryDir": "${sourceDir}/build/${presetName}",
-		    "toolchainFile": "${sourceDir}/third_party/stm32cubemx/cmake/gcc-arm-none-eabi.cmake",
+		    "toolchainFile": "${sourceDir}/third_party/stm32cubemx/custom_gcc-arm-none-eabi.cmake",
             "cacheVariables": {
             }
         },
