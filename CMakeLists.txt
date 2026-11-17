@@ -71,10 +71,3 @@ target_link_libraries(${CMAKE_PROJECT_NAME}
 	rocketlib::can_message
 	rocketlib::stm32_common
 )
-
-# Add flash target
-add_custom_target(flash
-	COMMAND STM32_Programmer_CLI -c port=SWD -w $<TARGET_FILE:${CMAKE_PROJECT_NAME}> -v -rst
-	DEPENDS ${CMAKE_PROJECT_NAME}
-	USES_TERMINAL
-)
