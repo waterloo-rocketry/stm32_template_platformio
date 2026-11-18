@@ -36,6 +36,10 @@ add_subdirectory(third_party/stm32cubemx/cmake/stm32cubemx)
 add_subdirectory(third_party/rocketlib)
 
 
+# Additional CMake code e.g. for formatting
+include(cmake/clang_format.cmake)
+
+
 # Source files to include in build
 
 set(source_dir src)
